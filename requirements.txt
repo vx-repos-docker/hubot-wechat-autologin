@@ -1,1 +1,4 @@
-zbar
+pyqrcode
+qrtools
+requests
+Pillow

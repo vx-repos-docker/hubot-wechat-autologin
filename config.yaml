@@ -11,7 +11,7 @@
 #------------------------------------------------------------------------------------------
 
 # Wx Urls #
-baseUrl: "https://wx.qq.com/cgi-bin/mmwebwx-bin" #wx/wx2
+baseUrl: "https://wx.qq.com/cgi-bin/mmwebwx-bin"
 baseUploadUrl: "https://file.wx.qq.com/cgi-bin/mmwebwx-bin" #file/file2
 getContactUrl: "/webwxgetcontact"
 batchGetContactUrl: "/webwxbatchgetcontact"
@@ -26,12 +26,12 @@ webwxsendmsgimg: "/webwxsendmsgimg"
 contentType: "application/json;charset=UTF-8"
 connection: "keep-alive"
 
-cookie: ""
+cookie: "webwxuvid=18e56580ff8045faa326892f3d6f85fb3ce092c6f6bc7a6993848092f4510b0860fc9dadd3d893581e52705c10951d6e; wxuin=1823211343; wxsid=V3sKObbN8uK3tK/4; wxloadtime=1472804081; webwx_data_ticket=gSd9eOzg1c+2M4LDXGXM7qQq; mm_lang=zh_CN; MM_WX_NOTIFY_STATE=1; MM_WX_SOUND_STATE=1"
 
-Uin: ""
-Sid: ""
-Skey:  ""
-DeviceID: ""
+Uin: "1823211343"
+Sid: "V3sKObbN8uK3tK/4"
+Skey: "@crypt_10826909_f6501637002bfb27642e757d8bb08816"
+DeviceID: "e529863564515981"
 
 listenOnAllGroups: true
 listenGroupNameList: [""]

@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 import requests
 import time
 import re
@@ -15,7 +14,8 @@ QR_BASE = 'https://login.weixin.qq.com/qrcode/'
 LOGIN_URL = 'https://login.weixin.qq.com/cgi-bin/mmwebwx-bin/login?uuid=%s&tip=1&_=%s'
 COOKIE = 'webwxuvid=%s; wxuin=%s; wxsid=%s; wxloadtime=%s; webwx_data_ticket=%s; mm_lang=zh_CN; MM_WX_NOTIFY_STATE=1; MM_WX_SOUND_STATE=1'
 DEFAULT_BASEURL = 'https://wx.qq.com/cgi-bin/mmwebwx-bin'
-CONFIG_FILE = './node_modules/hubot-weixin/config.yaml'
+#CONFIG_FILE = './node_modules/hubot-weixin/config.yaml'
+CONFIG_FILE = './config.yaml'
 
 
 def getQRURL():
