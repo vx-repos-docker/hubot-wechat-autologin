@@ -2,6 +2,7 @@ FROM killuavx/hubot-wechat
 MAINTAINER Ranger.Huang <killua.vx@gmail.com>
 ENV REFRESH_AT 2016-09-02
 
+USER root
 # https://github.com/docker-library/python/blob/855b85c8309e925814dfa97d61310080dcd08db6/2.7/alpine/Dockerfile
 
 # ensure local python is preferred over distribution python
@@ -98,5 +99,7 @@ COPY ./reconfig.py .
 COPY ./requirements.txt
 RUN pip install requirements.txt
 COPY ./docker-entrypoint.sh .
+
+USER hubot
 
 CMD docker-entrypoint.sh
