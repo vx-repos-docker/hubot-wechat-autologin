@@ -1,0 +1,2 @@
+hubot-wechat-autologin
+----------------------
