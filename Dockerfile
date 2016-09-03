@@ -3,9 +3,8 @@ MAINTAINER Ranger.Huang <killua.vx@gmail.com>
 ENV REFRESH_AT 2016-09-02
 
 USER root
-COPY ./rename.js /usr/lib/node_modules/npm/lib/utils/rename.js
 
-#RUN npm config set registry https://registry.npm.taobao.org
+RUN npm config set registry https://registry.npm.taobao.org
 RUN npm install -g coffee-script yo generator-hubot
 
 RUN mkdir -p /home/hubot
@@ -34,7 +33,7 @@ ENV LC_ALL="C.UTF-8" LANG="zh_CN.UTF-8"
 
 
 # ====================================================================================================
-RUN apt-get update && apt-get install -y python3 python3-dev python3-pip && \
+RUN apt-get update && apt-get install -y python-dev python-pip && \
         apt-get autoremove -y && \
         apt-get clean && \
         rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -42,11 +41,18 @@ RUN apt-get update && apt-get install -y python3 python3-dev python3-pip && \
 COPY ./zbar.sh .
 RUN sh zbar.sh
 
-USER hubot
 WORKDIR /home/hubot
-COPY ./reconfig.py .
-COPY ./requirements.txt
-RUN pip install requirements.txt
-COPY ./docker-entrypoint.sh .
+COPY ./requirements.txt .
+RUN pip install -r requirements.txt
 
-CMD docker-entrypoint.sh
+COPY ./reconfig.py .
+COPY ./docker-entrypoint.sh .
+RUN chmod a+x docker-entrypoint.sh
+
+# fix reinstall node_modules package to rename directory
+COPY ./rename.js /usr/local/lib/node_modules/npm/lib/utils/rename.js
+#COPY ./rename.js /usr/lib/node_modules/npm/lib/utils/rename.js
+
+USER hubot
+CMD ""
+ENTRYPOINT [ "/home/hubot/docker-entrypoint.sh" ]

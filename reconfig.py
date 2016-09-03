@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import sys
 import requests
 import time
 import re
@@ -14,8 +15,8 @@ QR_BASE = 'https://login.weixin.qq.com/qrcode/'
 LOGIN_URL = 'https://login.weixin.qq.com/cgi-bin/mmwebwx-bin/login?uuid=%s&tip=1&_=%s'
 COOKIE = 'webwxuvid=%s; wxuin=%s; wxsid=%s; wxloadtime=%s; webwx_data_ticket=%s; mm_lang=zh_CN; MM_WX_NOTIFY_STATE=1; MM_WX_SOUND_STATE=1'
 DEFAULT_BASEURL = 'https://wx.qq.com/cgi-bin/mmwebwx-bin'
-#CONFIG_FILE = './node_modules/hubot-weixin/config.yaml'
-CONFIG_FILE = './config.yaml'
+CONFIG_FILE = './node_modules/hubot-weixin/config.yaml'
+#CONFIG_FILE = './config.yaml'
 
 
 def getQRURL():
@@ -126,6 +127,13 @@ def replace_file(src, baseurl, skey, sid, uin, device_id, cookie):
 
 
 if __name__ == '__main__':
+    if len(sys.argv) > 1:
+        CONFIG_FILE = sys.argv[1]
+
+    if not os.path.isfile(CONFIG_FILE):
+        print "config_file: %s has not exists." % CONFIG_FILE
+        exit(1)
+
     print "Get login qr image..."
     qr = getQRURL()
     if not qr:
